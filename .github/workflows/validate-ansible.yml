@@ -1,0 +1,42 @@
+name: Validate Ansible playbooks
+
+on:
+  push:
+    paths:
+      - "inventory.ini"
+      - "*.yml"
+      - "monitoring/**"
+      - "backup/**"
+      - ".github/workflows/validate-ansible.yml"
+  pull_request:
+    paths:
+      - "inventory.ini"
+      - "*.yml"
+      - "monitoring/**"
+      - "backup/**"
+      - ".github/workflows/validate-ansible.yml"
+
+jobs:
+  syntax-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Ansible and firewalld collection
+        run: |
+          python -m pip install ansible-core
+          ansible-galaxy collection install ansible.posix
+
+      - name: Validate inventory and playbook syntax (no VM connections)
+        run: |
+          ansible-inventory -i inventory.ini --list > /dev/null
+          for playbook in nginx.yml system-check.yml monitoring/*.yml backup/*.yml; do
+            echo "Validating $playbook"
+            ansible-playbook -i inventory.ini --syntax-check "$playbook"
+          done
