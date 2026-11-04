@@ -1,4 +1,4 @@
-# NexaOps V2 — Enterprise Linux Infrastructure Lab
+# NexaOps V2 — Enterprise Linux Infrastructure & Automation
 
 A hands-on, four-VM Red Hat Enterprise Linux infrastructure project focused on practical **Linux System Administrator** skills: provisioning, Ansible automation, web services, shared storage, monitoring, centralized logging, security hardening, and backup/recovery.
 
