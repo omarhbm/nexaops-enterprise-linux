@@ -4,6 +4,10 @@ A hands-on, four-VM Red Hat Enterprise Linux infrastructure project focused on p
 
 > **Scope:** VMware-based learning lab, not a production-ready deployment. This repository contains selected Ansible playbooks, a static web page, and documentation. Some services were configured interactively on the VMs and their complete configuration files are not included here.
 
+## Automated Validation
+
+[GitHub Actions](.github/workflows/validate-ansible.yml) automatically checks the Ansible inventory and syntax of all included playbooks on pushes and pull requests. The validation workflow has passed. These static checks help catch configuration errors, but they do not verify live services on the VMware lab servers.
+
 ## Architecture
 
 ```mermaid
