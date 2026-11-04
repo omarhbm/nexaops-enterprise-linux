@@ -1,4 +1,4 @@
-# NexaOps V2 — Enterprise Linux Infrastructure & Automation
+# NexaOps — Enterprise Linux Infrastructure & Automation
 
 A hands-on, four-VM Red Hat Enterprise Linux infrastructure project focused on practical **Linux System Administrator** skills: provisioning, Ansible automation, web services, shared storage, monitoring, centralized logging, security hardening, and backup/recovery.
 
@@ -44,7 +44,7 @@ All addresses are **private lab IPs**; adapt them to your environment.
 ## Repository structure
 
 ```text
-nexaops-v2/
+nexaops-enterprise-linux/
 ├── README.md
 ├── .gitignore
 ├── inventory.ini
@@ -98,7 +98,7 @@ This playbook **does not create the backup**. It fetches the current day's exist
 - [Backup & Recovery](docs/backup-and-recovery.md)
 - [Screenshot checklist](docs/screenshots.md)
 
-Screenshots are **not included** in this source archive. Add only reviewed, sanitized screenshots when available.
+Selected screenshots are linked below. Review and sanitize any additional screenshots before publishing.
 
 ## Skills demonstrated
 
