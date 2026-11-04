@@ -1,0 +1,11 @@
+---
+- name: Check managed servers
+  hosts: all
+
+  tasks:
+    - name: Check uptime
+      command:  uptime
+
+    - name: Check disk usage
+      command: df -h
+

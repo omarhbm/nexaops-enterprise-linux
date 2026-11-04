@@ -1,0 +1,63 @@
+
+---
+- hosts: web:storage
+  become: yes
+
+  tasks:
+    - name: Create user
+      user:
+        name: node_exporter
+        system: yes
+        create_home: no
+        shell: /sbin/nologin
+
+    - name: Download
+      get_url:
+        url: https://github.com/prometheus/node_exporter/releases/download/v1.12.1/node_exporter-1.12.1.linux-amd64.tar.gz
+        dest: /tmp/node.tar.gz
+        checksum: sha256:b51d8a76aa2a9156a55d501aca6276fae09e262259a5e4e831d2c2222f084e63
+
+    - name: Extract
+      unarchive:
+        src: /tmp/node.tar.gz
+        dest: /tmp
+        remote_src: yes
+        creates: /tmp/node_exporter-1.12.1.linux-amd64/node_exporter
+
+    - name: Install
+      copy:
+        src: /tmp/node_exporter-1.12.1.linux-amd64/node_exporter
+        dest: /usr/local/bin/node_exporter
+        remote_src: yes
+        mode: '0755'
+
+    - name: Create service
+      copy:
+        dest: /etc/systemd/system/node_exporter.service
+        content: |
+          [Unit]
+          Description=Node Exporter
+          After=network.target
+
+          [Service]
+          User=node_exporter
+          ExecStart=/usr/local/bin/node_exporter
+          Restart=on-failure
+
+          [Install]
+          WantedBy=multi-user.target
+
+    - name: Start service
+      systemd:
+        name: node_exporter
+        daemon_reload: yes
+        enabled: yes
+        state: started
+
+    - name: Allow Prometheus
+      ansible.posix.firewalld:
+        rich_rule: 'rule family="ipv4" source address="192.168.51.134/32" port port="9100" protocol="tcp" accept'
+        permanent: yes
+        immediate: yes
+        state: enabled
+

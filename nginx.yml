@@ -1,0 +1,25 @@
+---
+
+- name: Configure Nginx
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Install Nginx
+      dnf:
+        name: nginx
+        state: present
+
+    - name: Start and enable Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: Deploy web page
+      copy:
+        src: files/index.html
+        dest: /usr/share/nginx/html/index.html
+        owner: root
+        group: root
+        mode: "0644" 

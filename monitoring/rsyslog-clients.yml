@@ -1,0 +1,25 @@
+
+---
+- name: Configure remote logging
+  hosts: web:storage
+  become: yes
+
+  tasks:
+    - name: Configure rsyslog forwarding
+      copy:
+        dest: /etc/rsyslog.d/90-forward.conf
+        content: |
+          *.* action(type="omfwd"
+                     target="192.168.51.134"
+                     port="514"
+                     protocol="tcp"
+                     action.resumeRetryCount="-1"
+                     queue.type="linkedList"
+                     queue.filename="remote_queue")
+
+    - name: Restart rsyslog
+      systemd:
+        name: rsyslog
+        state: restarted
+        enabled: yes
+

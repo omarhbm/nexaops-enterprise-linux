@@ -1,0 +1,19 @@
+# SSH private keys
+*.pem
+*.key
+id_rsa
+id_ed25519
+nexaops_backup
+
+# Ansible secrets
+*.retry
+.vault_pass*
+*.secret
+*.env
+
+# Backup archives
+*.tar.gz
+
+# Temporary files
+*.swp
+*~

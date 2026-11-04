@@ -1,0 +1,32 @@
+---
+- name: Download Nginx backup from web01
+  hosts: web
+  gather_facts: no
+
+  vars:
+    ansible_user: backupsvc
+    ansible_ssh_private_key_file: /root/.ssh/nexaops_backup
+    backup_date: "{{ lookup('pipe', 'date +%F') }}"
+
+  tasks:
+    - name: Fetch backup to control node
+      fetch:
+        src: "/var/backups/nexaops/nginx-{{ backup_date }}.tar.gz"
+        dest: /root/backup-transfer/
+        flat: yes
+
+- name: Upload Nginx backup to storage01
+  hosts: storage
+  gather_facts: no
+
+  vars:
+    ansible_user: backupsvc
+    ansible_ssh_private_key_file: /root/.ssh/nexaops_backup
+    backup_date: "{{ lookup('pipe', 'date +%F') }}"
+
+  tasks:
+    - name: Copy backup to storage01
+      copy:
+        src: "/root/backup-transfer/nginx-{{ backup_date }}.tar.gz"
+        dest: "/data/backups/nginx-{{ backup_date }}.tar.gz"
+        mode: '0600'
