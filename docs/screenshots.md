@@ -1,15 +1,18 @@
-# Screenshot checklist
+# Screenshot evidence
 
-This archive does **not** include the project's screenshots. Add sanitized images to `screenshots/` when ready and link them here. Avoid exposing passwords, tokens, SSH private keys, or unnecessary personal data.
+The repository includes ten selected screenshots from the 71-image lab archive.
 
-## Final validation
+| Screenshot | Evidence |
+|---|---|
+| [Ansible connectivity](../screenshots/09-ansible-connectivity.png) | Connectivity checks across managed hosts |
+| [Automated Nginx deployment](../screenshots/12-nginx-ansible-deployment.png) | Ansible playbook deployment |
+| [Nginx landing page](../screenshots/14-nexaops-web-page.png) | Custom web page served from web01 |
+| [LVM storage](../screenshots/18-lvm-configuration.png) | Logical volume configuration |
+| [NFS sharing](../screenshots/26-nfs-file-sharing-test.png) | Cross-host file sharing validation |
+| [Firewall security](../screenshots/39-firewalld-zones-services.png) | Firewall configuration checks |
+| [Prometheus targets](../screenshots/49-prometheus-multiple-targets.png) | Monitoring targets |
+| [Grafana dashboard](../screenshots/52-grafana-linux-monitoring-dashboard.png) | Linux metrics dashboard |
+| [Centralized logging](../screenshots/54-centralized-rsyslog-collection.png) | rsyslog collection |
+| [Remote backup](../screenshots/69-ansible-direct-backup.png) | Ansible backup transfer to storage01 |
 
-| Filename | What to show |
-| --- | --- |
-| `69-ansible-direct-backup.png` | Successful Ansible remote backup play recap and/or destination verification |
-| `70-infrastructure-health-check.png` | Successful Ansible ping, uptime, disk usage and key service checks |
-| `71-final-security-backup-check.png` | SELinux, firewalld, backup timer and backup archive verification |
-
-## Other project evidence
-
-Earlier lab screenshots (for example, Nginx deployment, NFS, monitoring, SSH hardening and restore testing) can be added later. Preserve the original numbering and use descriptive filenames.
+The remaining screenshots are retained outside this repository.

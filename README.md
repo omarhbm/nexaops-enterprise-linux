@@ -103,3 +103,68 @@ Screenshots are **not included** in this source archive. Add only reviewed, sani
 ## Skills demonstrated
 
 Linux administration · RHEL 9 · Bash · Ansible · SSH · Nginx · NFS · LVM/XFS · systemd · SELinux · firewalld · ACLs · rsyslog · Prometheus Node Exporter · backup and restore · troubleshooting
+
+## Project screenshots
+
+Selected evidence from the lab. Screenshots illustrate the tested environment; they are not substitutes for the full VM configuration.
+
+### Ansible connectivity
+
+Connectivity checks across managed hosts.
+
+![Ansible connectivity](screenshots/09-ansible-connectivity.png)
+
+### Automated Nginx deployment
+
+Ansible playbook deployment.
+
+![Automated Nginx deployment](screenshots/12-nginx-ansible-deployment.png)
+
+### Nginx landing page
+
+Custom web page served from web01.
+
+![Nginx landing page](screenshots/14-nexaops-web-page.png)
+
+### LVM storage
+
+Logical volume configuration.
+
+![LVM storage](screenshots/18-lvm-configuration.png)
+
+### NFS sharing
+
+Cross-host file sharing validation.
+
+![NFS sharing](screenshots/26-nfs-file-sharing-test.png)
+
+### Firewall security
+
+Firewall configuration checks.
+
+![Firewall security](screenshots/39-firewalld-zones-services.png)
+
+### Prometheus targets
+
+Monitoring targets.
+
+![Prometheus targets](screenshots/49-prometheus-multiple-targets.png)
+
+### Grafana dashboard
+
+Linux metrics dashboard.
+
+![Grafana dashboard](screenshots/52-grafana-linux-monitoring-dashboard.png)
+
+### Centralized logging
+
+rsyslog collection.
+
+![Centralized logging](screenshots/54-centralized-rsyslog-collection.png)
+
+### Remote backup
+
+Ansible backup transfer to storage01.
+
+![Remote backup](screenshots/69-ansible-direct-backup.png)
+
