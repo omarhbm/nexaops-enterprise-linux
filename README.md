@@ -144,7 +144,7 @@ Cross-host file sharing validation.
 
 ### Firewall security
 
-Firewall configuration checks.
+Firewall configuration checks
 
 ![Firewall security](screenshots/39-firewalld-zones-services.png)
 
